@@ -1,0 +1,7 @@
+{
+  "name": "DiagnoHealth",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
