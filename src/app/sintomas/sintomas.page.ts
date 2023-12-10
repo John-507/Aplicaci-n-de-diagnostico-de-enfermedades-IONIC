@@ -65,7 +65,7 @@ export class SintomasPage implements OnInit {
       loading.dismiss();
 
       // Navega a la página de resultado pasando los datos como parámetros
-      this.navCtrl.navigateForward(['/resultado'], {
+      this.navCtrl.navigateForward(['/resultados'], {
         queryParams: { diagnostico: JSON.stringify(res) }
       });
     }, err => {
