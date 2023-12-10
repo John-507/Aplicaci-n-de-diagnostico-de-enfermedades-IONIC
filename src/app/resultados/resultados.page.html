@@ -1,13 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>resultados</ion-title>
+    <ion-title>Diagnostico</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">resultados</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card *ngIf="resultado">
+    <ion-card-header>
+      <ion-card-title>{{ resultado.enfermedad }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Descripción:</strong> {{ resultado.descripcion }}</p>
+      <p><strong>Precauciones:</strong> {{ resultado.precauciones }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
