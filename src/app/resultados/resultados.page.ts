@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-resultados',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resultados.page.scss'],
 })
 export class ResultadosPage implements OnInit {
+  resultado: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params && params['diagnostico']) {
+      this.resultado = JSON.parse(params['diagnostico']);
+      }
+      });
+      }
+     
   }
 
-}
+
