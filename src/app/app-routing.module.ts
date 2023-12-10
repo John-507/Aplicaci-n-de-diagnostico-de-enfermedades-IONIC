@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'sintomas',
     loadChildren: () => import('./sintomas/sintomas.module').then( m => m.SintomasPageModule)
+  },  {
+    path: 'resultados',
+    loadChildren: () => import('./resultados/resultados.module').then( m => m.ResultadosPageModule)
   }
+
 ];
 @NgModule({
   imports: [
