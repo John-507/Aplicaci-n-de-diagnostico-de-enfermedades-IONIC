@@ -21,6 +21,7 @@ export class SintomasPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.cargarSintomas();
   }
 
   async cargarSintomas(){
@@ -75,5 +76,5 @@ export class SintomasPage implements OnInit {
   }
 
 
-  
+
 }
