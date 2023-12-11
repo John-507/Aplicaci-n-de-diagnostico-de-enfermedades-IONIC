@@ -3,6 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="#"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="primary">
+     <ion-button fill="solid" (click)="enviar()" color="tertiary">
+       Enviar
+       <ion-icon slot="end" name="send"></ion-icon>
+     </ion-button>
+    </ion-buttons>
     <ion-title>Síntomas</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -18,5 +24,5 @@
       <ion-checkbox slot="end" [(ngModel)]="sintoma.seleccionado" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="enviar()">Enviar</ion-button>
+  
 </ion-content>
