@@ -9,11 +9,11 @@
 
 <ion-content>
   <h5>Selecciona todos los síntomas que presentas</h5>
-  <ion-list>
-    <!-- Asegúrate de que la propiedad 'nombre' exista en los objetos de síntomas -->
+  <ion-list *ngIf="sintomasFiltrados.length > 0">
+    
     <ion-item *ngFor="let sintoma of sintomas">
       <ion-label>{{ sintoma.id}}  - {{sintoma.nombre }}</ion-label>
-      <!-- Utiliza 'sintoma.id' como clave para el objeto 'seleccionados' -->
+      
       <ion-checkbox slot="end" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
     </ion-item>
   </ion-list>

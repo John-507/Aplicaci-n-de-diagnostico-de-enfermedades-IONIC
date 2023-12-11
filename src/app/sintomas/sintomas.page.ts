@@ -23,6 +23,9 @@ export class SintomasPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    //this.cargarSintomas();
+  }
+  ionViewWillEnter(){
     this.cargarSintomas();
   }
 
@@ -38,6 +41,7 @@ export class SintomasPage implements OnInit {
       // Asigna los síntomas obtenidos al array 'sintomas'
       this.sintomas = sintomas;
       this.sintomasFiltrados = sintomas;
+      this.restablecerSeleccion();
       console.log('Lista de síntomas:', this.sintomas);
       //oculta el indicador de carga
       loading.dismiss();
@@ -46,6 +50,14 @@ export class SintomasPage implements OnInit {
       console.error('Error al cargar los sintomas:', err);
       loading.dismiss();
     });
+  }
+
+  restablecerSeleccion(){
+    this.seleccionados = {};
+    this.sintomas.forEach(sintoma => {
+      sintoma.seleccionado = false;
+    });
+    this.sintomasFiltrados = [...this.sintomas];
   }
 
   cambiarSeleccion(sintomaId: number, valor: boolean) {
