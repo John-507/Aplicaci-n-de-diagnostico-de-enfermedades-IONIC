@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   obtenerSintomas() {
-    return this.http.get<string[]>(this.urlSintomas);
+    return this.http.get<any[]>(this.urlSintomas);
   }
 
   

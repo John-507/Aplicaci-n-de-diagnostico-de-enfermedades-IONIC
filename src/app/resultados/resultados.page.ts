@@ -14,11 +14,11 @@ export class ResultadosPage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params && params['diagnostico']) {
-      this.resultado = JSON.parse(params['diagnostico']);
+        this.resultado = JSON.parse(params['diagnostico']);
       }
-      });
-      }
-     
+    });
   }
+
+}
 
 
