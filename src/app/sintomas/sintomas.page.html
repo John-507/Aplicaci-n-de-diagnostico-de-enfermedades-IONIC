@@ -8,7 +8,7 @@
   <ion-list>
     <!-- Asegúrate de que la propiedad 'nombre' exista en los objetos de síntomas -->
     <ion-item *ngFor="let sintoma of sintomas">
-      <ion-label>{{ sintoma.nombre }}</ion-label>
+      <ion-label>{{ sintoma.id}}  - {{sintoma.nombre }}</ion-label>
       <!-- Utiliza 'sintoma.id' como clave para el objeto 'seleccionados' -->
       <ion-checkbox slot="end" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
     </ion-item>
