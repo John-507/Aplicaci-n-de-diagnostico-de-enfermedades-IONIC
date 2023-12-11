@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  private urlDiagnostico = 'http://localhost:5000/diagnosticar';
-  private urlSintomas = 'http://localhost:5000/sintomas';
+  private urlDiagnostico = 'http://192.168.1.109:5000/diagnosticar';
+  private urlSintomas = 'http://192.168.1.109:5000/sintomas';
 
   constructor(private http: HttpClient) { }
 
