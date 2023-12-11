@@ -12,6 +12,8 @@ export class SintomasPage implements OnInit {
   sintomas: any[] = [];
 
   seleccionados: any = {};
+  termino: string = '';
+  sintomasFiltrados: any[] = [];
 
 
   constructor(
@@ -35,6 +37,7 @@ export class SintomasPage implements OnInit {
     this.api.obtenerSintomas().subscribe(sintomas => {
       // Asigna los síntomas obtenidos al array 'sintomas'
       this.sintomas = sintomas;
+      this.sintomasFiltrados = sintomas;
       console.log('Lista de síntomas:', this.sintomas);
       //oculta el indicador de carga
       loading.dismiss();
@@ -45,18 +48,13 @@ export class SintomasPage implements OnInit {
     });
   }
 
-  cambiarSeleccion(sintoma: string, valor: boolean) {
-    // Convierte el ID de sintoma a un número
-    const idNumerico = Number(sintoma);
-    this.seleccionados[idNumerico] = valor;
-
-    // Encuentra el objeto de síntoma basado en el ID numérico
-    let sintomaObjeto = this.sintomas.find(sintoma => sintoma.id === idNumerico);
-    if (sintomaObjeto && sintomaObjeto.nombre) {
-      console.log(`ID: ${idNumerico}, Nombre: ${sintomaObjeto.nombre}, Seleccionado: ${valor}`);
-    } else {
-      console.log(`No se encontró un nombre para el ID: ${idNumerico}`);
-    }
+  cambiarSeleccion(sintomaId: number, valor: boolean) {
+    this.seleccionados[sintomaId] = valor;
+    // Actualiza la lista de síntomas filtrados para reflejar el estado de los checkboxes
+    this.sintomasFiltrados = this.sintomasFiltrados.map(sintoma => {
+      sintoma.seleccionado = this.seleccionados[sintoma.id];
+      return sintoma;
+    });
   }
 
   async enviar() {
@@ -81,6 +79,20 @@ export class SintomasPage implements OnInit {
       console.error('Error al enviar los síntomas:', err);
       loading.dismiss();
     });
+  }
+
+  buscar() {
+    if (this.termino === '') {
+      this.sintomasFiltrados = this.sintomas;
+    } else {
+      const resultados = this.sintomas.filter(sintoma =>
+        sintoma.nombre.toLowerCase().includes(this.termino.toLowerCase())
+      );
+      this.sintomasFiltrados = resultados.sort((a, b) => {
+        return a.nombre.toLowerCase().indexOf(this.termino.toLowerCase()) -
+               b.nombre.toLowerCase().indexOf(this.termino.toLowerCase());
+      });
+    }
   }
 
 }
