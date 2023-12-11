@@ -8,13 +8,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar [(ngModel)]="termino" (ionInput)="buscar()"></ion-searchbar>
   <h5>Selecciona todos los síntomas que presentas</h5>
   <ion-list *ngIf="sintomasFiltrados.length > 0">
     
-    <ion-item *ngFor="let sintoma of sintomas">
+    <ion-item *ngFor="let sintoma of sintomasFiltrados">
       <ion-label>{{ sintoma.id}}  - {{sintoma.nombre }}</ion-label>
       
-      <ion-checkbox slot="end" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
+      <ion-checkbox slot="end" [(ngModel)]="sintoma.seleccionado" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
     </ion-item>
   </ion-list>
   <ion-button expand="full" (click)="enviar()">Enviar</ion-button>
