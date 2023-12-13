@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+ion-content{
+    font-family: 'Staatliches';
+    letter-spacing: 1px;
+    --background: linear-gradient(160deg, rgba(2,0,36,1) 0%, rgba(11,64,158,1) 35%, rgba(45,211,111,1) 100%);
+}
+
+ion-toolbar{
+    --opacity: 0;
+}
+
+ion-item {
+    --background: #0C419E;
+    --border-radius: 20px;
+    --background-hover-opacity: 25%;
+}
+
+ion-card, ion-button, ion-title{
+    letter-spacing: 1px;
+    font-family: 'Staatliches';
+
+}
