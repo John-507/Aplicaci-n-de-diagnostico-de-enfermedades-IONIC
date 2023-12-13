@@ -1,21 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="success">
+<ion-header no-border>
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button default-href="#"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-     <ion-button fill="solid" (click)="enviar()" color="tertiary">
-       Enviar
-       <ion-icon slot="end" name="send"></ion-icon>
-     </ion-button>
     </ion-buttons>
     <ion-title>Síntomas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      refreshingSpinner="bubbles"
+    ></ion-refresher-content>
+  </ion-refresher>
   <ion-searchbar [(ngModel)]="termino" (ionInput)="buscar()"></ion-searchbar>
-  <h5>Selecciona todos los síntomas que presentas</h5>
+  <h5>Selecciona los síntomas que presentas</h5>
   <ion-list *ngIf="sintomasFiltrados.length > 0">
     
     <ion-item *ngFor="let sintoma of sintomasFiltrados">
@@ -24,5 +23,5 @@
       <ion-checkbox slot="end" [(ngModel)]="sintoma.seleccionado" (ionChange)="cambiarSeleccion(sintoma.id, $event.detail.checked)"></ion-checkbox>
     </ion-item>
   </ion-list>
-  
+  <ion-button expand="full" (click)="enviar()">Enviar</ion-button>
 </ion-content>
