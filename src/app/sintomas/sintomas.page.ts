@@ -107,4 +107,12 @@ export class SintomasPage implements OnInit {
     }
   }
 
+  doRefresh(event:any) {
+
+    this.cargarSintomas().then(() => {
+
+      event.target.complete();
+    });
+  }
+
 }
