@@ -1,5 +1,10 @@
 # Aplicacion-de-diagnostico-de-enfermedades-IONIC
+
 Semestral de Sistemas Expertos 
+Integrantes:
+Jeison Aguilar
+John Morales
+
 Pasos para probar esta APLICACIÓN:
 1. Clonar repositorio:
 ```sh
